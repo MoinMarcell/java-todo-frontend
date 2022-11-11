@@ -8,6 +8,7 @@ ECHO ---------------------
 ECHO "Baue Frontend..."
 ECHO ---------------------
 cd frontend
+$env:NODE_OPTIONS="--openssl-legacy-provider"
 npm install
 npm run build
 cd ..

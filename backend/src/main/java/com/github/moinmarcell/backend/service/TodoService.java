@@ -9,9 +9,11 @@ import java.util.List;
 @Service
 public class TodoService {
     TodoRepo todoRepo;
+    IdService idService;
 
-    public TodoService(TodoRepo todoRepo) {
+    public TodoService(TodoRepo todoRepo, IdService idService) {
         this.todoRepo = todoRepo;
+        this.idService = idService;
     }
 
     public List<Todo> getTodos(){
@@ -19,7 +21,8 @@ public class TodoService {
     }
 
     public Todo addTodo(Todo todoToAdd){
-        return todoRepo.addTodo(todoToAdd);
+        Todo toSave = new Todo(idService.generateId(), todoToAdd.description(), todoToAdd.status());
+        return todoRepo.addTodo(toSave);
     }
 
     public Todo getTodoById(String id){

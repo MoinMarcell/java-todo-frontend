@@ -4,21 +4,23 @@ import com.github.moinmarcell.backend.model.Todo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Random;
 
 @Repository
-public record TodoRepo(List<Todo> todos) {
+public class TodoRepo {
+    private List<Todo> todos;
+
+    public List<Todo> todos() {
+        return todos;
+    }
 
     public Todo addTodo(Todo todoToAdd) {
         for (Todo t : todos) {
             if (t.equals(todoToAdd)) {
-                return null;
+                return t;
             }
         }
-        Random random = new Random();
-        Todo copy = new Todo(String.valueOf(random.nextInt(1, 100000)), todoToAdd.description(), todoToAdd.status());
-        todos.add(copy);
-        return copy;
+        todos.add(todoToAdd);
+        return todoToAdd;
     }
 
     public Todo getTodoById(String id){

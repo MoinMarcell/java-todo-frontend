@@ -3,11 +3,16 @@ package com.github.moinmarcell.backend.repo;
 import com.github.moinmarcell.backend.model.Todo;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class TodoRepo {
-    private List<Todo> todos;
+    private final List<Todo> todos;
+
+    public TodoRepo() {
+        todos = new ArrayList<>();
+    }
 
     public List<Todo> todos() {
         return todos;

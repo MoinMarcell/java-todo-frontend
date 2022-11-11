@@ -2,7 +2,6 @@ package com.github.moinmarcell.backend.controller;
 
 import com.github.moinmarcell.backend.model.Todo;
 import com.github.moinmarcell.backend.service.TodoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class TodoController {
 
-    @Autowired
-    TodoService todoService;
+    private final TodoService todoService;
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
